@@ -22,7 +22,7 @@ Boolean gb_expand = True
 
 String gs_msg_title = "Sales CRM Demo"
 
-
+STRING	gs_echartstheme
 end variables
 
 global type salesdemo from application
@@ -83,6 +83,18 @@ ls_theme = ProfileString("apisetup.ini", "Setup", "Theme", "Flat Design Blue")
 IF ls_theme <> "Do Not Use Themes" THEN
 	applytheme(GetCurrentDirectory( ) + "\Theme\" + ls_theme)
 END IF
+
+Choose Case GetTheme()
+	Case "Flat Design Silver"
+		gs_EChartsTheme = 'default'
+	Case "Flat Design Blue"
+		gs_EChartsTheme = 'light'
+	Case "Flat Design Dark"
+		gs_EChartsTheme = 'dark'
+	Case "Flat Design Grey"
+		gs_EChartsTheme = 'default'
+	Case Else
+End Choose
 
 IF of_getserviceurl() = 1 Then
 	open(w_main)
