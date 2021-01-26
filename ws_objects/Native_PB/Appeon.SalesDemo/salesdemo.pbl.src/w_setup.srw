@@ -277,6 +277,17 @@ ELSE
 			w_main.dynamic of_refreshtheme()
 			w_main.dynamic of_refresh_ribbonbartheme()
 			is_theme = ls_theme
+			Choose Case GetTheme()
+				Case "Flat Design Silver"
+					gs_EChartsTheme = 'default'
+				Case "Flat Design Blue"
+					gs_EChartsTheme = 'light'
+				Case "Flat Design Dark"
+					gs_EChartsTheme = 'dark'
+				Case "Flat Design Grey"
+					gs_EChartsTheme = 'default'
+				Case Else
+			End Choose
 		END IF
 	end  if 
 	Close(parent)
