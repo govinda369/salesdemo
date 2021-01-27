@@ -20,6 +20,55 @@ type dw_subfilter from u_dw within tabpage_2
 end type
 type cb_subfilter from u_button within tabpage_2
 end type
+type tabpage_echarts_pie from userobject within tab_1
+end type
+type dw_series from u_dw within tabpage_echarts_pie
+end type
+type dw_category from u_dw within tabpage_echarts_pie
+end type
+type ddlb_1 from dropdownlistbox within tabpage_echarts_pie
+end type
+type st_11 from statictext within tabpage_echarts_pie
+end type
+type rb_3 from radiobutton within tabpage_echarts_pie
+end type
+type rb_2 from radiobutton within tabpage_echarts_pie
+end type
+type rb_1 from radiobutton within tabpage_echarts_pie
+end type
+type st_10 from statictext within tabpage_echarts_pie
+end type
+type wb_echarts from n_webbrowser within tabpage_echarts_pie
+end type
+type dw_graph from u_dw within tabpage_echarts_pie
+end type
+type st_9 from statictext within tabpage_echarts_pie
+end type
+type st_8 from statictext within tabpage_echarts_pie
+end type
+type st_7 from statictext within tabpage_echarts_pie
+end type
+type st_6 from statictext within tabpage_echarts_pie
+end type
+type st_5 from statictext within tabpage_echarts_pie
+end type
+type tabpage_echarts_pie from userobject within tab_1
+dw_series dw_series
+dw_category dw_category
+ddlb_1 ddlb_1
+st_11 st_11
+rb_3 rb_3
+rb_2 rb_2
+rb_1 rb_1
+st_10 st_10
+wb_echarts wb_echarts
+dw_graph dw_graph
+st_9 st_9
+st_8 st_8
+st_7 st_7
+st_6 st_6
+st_5 st_5
+end type
 type tabpage_4 from userobject within tab_1
 end type
 type dw_report from u_dw within tabpage_4
@@ -95,55 +144,6 @@ dw_compressreport dw_compressreport
 cbx_1 cbx_1
 st_3 st_3
 cb_retrieve cb_retrieve
-end type
-type tabpage_echarts_pie from userobject within tab_1
-end type
-type dw_series from u_dw within tabpage_echarts_pie
-end type
-type dw_category from u_dw within tabpage_echarts_pie
-end type
-type ddlb_1 from dropdownlistbox within tabpage_echarts_pie
-end type
-type st_11 from statictext within tabpage_echarts_pie
-end type
-type rb_3 from radiobutton within tabpage_echarts_pie
-end type
-type rb_2 from radiobutton within tabpage_echarts_pie
-end type
-type rb_1 from radiobutton within tabpage_echarts_pie
-end type
-type st_10 from statictext within tabpage_echarts_pie
-end type
-type wb_echarts from n_webbrowser within tabpage_echarts_pie
-end type
-type dw_graph from u_dw within tabpage_echarts_pie
-end type
-type st_9 from statictext within tabpage_echarts_pie
-end type
-type st_8 from statictext within tabpage_echarts_pie
-end type
-type st_7 from statictext within tabpage_echarts_pie
-end type
-type st_6 from statictext within tabpage_echarts_pie
-end type
-type st_5 from statictext within tabpage_echarts_pie
-end type
-type tabpage_echarts_pie from userobject within tab_1
-dw_series dw_series
-dw_category dw_category
-ddlb_1 ddlb_1
-st_11 st_11
-rb_3 rb_3
-rb_2 rb_2
-rb_1 rb_1
-st_10 st_10
-wb_echarts wb_echarts
-dw_graph dw_graph
-st_9 st_9
-st_8 st_8
-st_7 st_7
-st_6 st_6
-st_5 st_5
 end type
 type st_graph from statictext within u_salesreport
 end type
@@ -1049,36 +1049,36 @@ type tab_1 from u_tab_base`tab_1 within u_salesreport
 integer x = 0
 integer width = 4133
 integer height = 2708
+tabpage_echarts_pie tabpage_echarts_pie
 tabpage_4 tabpage_4
 tabpage_5 tabpage_5
 tabpage_6 tabpage_6
 tabpage_3 tabpage_3
-tabpage_echarts_pie tabpage_echarts_pie
 end type
 
 on tab_1.create
+this.tabpage_echarts_pie=create tabpage_echarts_pie
 this.tabpage_4=create tabpage_4
 this.tabpage_5=create tabpage_5
 this.tabpage_6=create tabpage_6
 this.tabpage_3=create tabpage_3
-this.tabpage_echarts_pie=create tabpage_echarts_pie
 call super::create
 this.Control[]={this.tabpage_1,&
 this.tabpage_2,&
+this.tabpage_echarts_pie,&
 this.tabpage_4,&
 this.tabpage_5,&
 this.tabpage_6,&
-this.tabpage_3,&
-this.tabpage_echarts_pie}
+this.tabpage_3}
 end on
 
 on tab_1.destroy
 call super::destroy
+destroy(this.tabpage_echarts_pie)
 destroy(this.tabpage_4)
 destroy(this.tabpage_5)
 destroy(this.tabpage_6)
 destroy(this.tabpage_3)
-destroy(this.tabpage_echarts_pie)
 end on
 
 event tab_1::selectionchanged;call super::selectionchanged;
@@ -1390,6 +1390,412 @@ of_set_backcolor()
 Parent.Post SetRedraw(True)
 
 end event
+
+type tabpage_echarts_pie from userobject within tab_1
+event create ( )
+event destroy ( )
+event ue_open ( )
+integer x = 142
+integer y = 16
+integer width = 3973
+integer height = 2676
+long backcolor = 67108864
+string text = "ECharts Pie"
+long tabtextcolor = 33554432
+long picturemaskcolor = 536870912
+dw_series dw_series
+dw_category dw_category
+ddlb_1 ddlb_1
+st_11 st_11
+rb_3 rb_3
+rb_2 rb_2
+rb_1 rb_1
+st_10 st_10
+wb_echarts wb_echarts
+dw_graph dw_graph
+st_9 st_9
+st_8 st_8
+st_7 st_7
+st_6 st_6
+st_5 st_5
+end type
+
+on tabpage_echarts_pie.create
+this.dw_series=create dw_series
+this.dw_category=create dw_category
+this.ddlb_1=create ddlb_1
+this.st_11=create st_11
+this.rb_3=create rb_3
+this.rb_2=create rb_2
+this.rb_1=create rb_1
+this.st_10=create st_10
+this.wb_echarts=create wb_echarts
+this.dw_graph=create dw_graph
+this.st_9=create st_9
+this.st_8=create st_8
+this.st_7=create st_7
+this.st_6=create st_6
+this.st_5=create st_5
+this.Control[]={this.dw_series,&
+this.dw_category,&
+this.ddlb_1,&
+this.st_11,&
+this.rb_3,&
+this.rb_2,&
+this.rb_1,&
+this.st_10,&
+this.wb_echarts,&
+this.dw_graph,&
+this.st_9,&
+this.st_8,&
+this.st_7,&
+this.st_6,&
+this.st_5}
+end on
+
+on tabpage_echarts_pie.destroy
+destroy(this.dw_series)
+destroy(this.dw_category)
+destroy(this.ddlb_1)
+destroy(this.st_11)
+destroy(this.rb_3)
+destroy(this.rb_2)
+destroy(this.rb_1)
+destroy(this.st_10)
+destroy(this.wb_echarts)
+destroy(this.dw_graph)
+destroy(this.st_9)
+destroy(this.st_8)
+destroy(this.st_7)
+destroy(this.st_6)
+destroy(this.st_5)
+end on
+
+event ue_open();String ls_Category, ls_SeriesName, ls_SeriesName2
+Long ll_SeriesCount, ll_Row, ll_Row2, ll_i, ll_j, ll_DataCount, ldb_Value
+Integer	li_rtc
+
+//dw_graph.SetTransObject(SQLCA)
+//dw_graph.Retrieve()
+li_rtc = inv_RESTClient.Retrieve(dw_graph, "http://192.168.1.92:8080/api/OrderReport/RetrieveDeptCountAsync")
+
+
+ib_flag = TRUE
+ll_SeriesCount = dw_graph.SeriesCount("gr_1")
+
+FOR ll_i = 1 TO ll_SeriesCount
+	ls_SeriesName = dw_graph.SeriesName( "gr_1", ll_i)
+	ls_SeriesName2 = ls_SeriesName
+	IF IsNull(ls_SeriesName2) OR ls_SeriesName2 = "" THEN
+		ls_SeriesName2 = "Series" + String(ll_i)
+	END IF
+	
+	ddlb_1.AddItem(ls_SeriesName2)
+	
+	ll_Row = dw_series.InsertRow(0)
+	dw_series.SetItem(ll_Row, 1, ls_SeriesName2)
+	
+	ll_DataCount = dw_graph.DataCount( "gr_1", ls_SeriesName)
+	FOR ll_j = 1 TO ll_DataCount
+		ls_Category = dw_graph.CategoryName( "gr_1", ll_j)
+		ldb_Value = dw_graph.GetData( "gr_1", ll_i, ll_j)
+		ll_Row2 = dw_category.InsertRow(0)
+		dw_category.SetItem(ll_Row2, "series", ls_SeriesName2)
+		dw_category.SetItem(ll_Row2, "name", ls_Category)
+		dw_category.SetItem(ll_Row2, "values", ldb_Value)
+	NEXT
+NEXT
+
+ddlb_1.post SelectItem( ddlb_1.totalitems( ) )
+ddlb_1.post Event selectionchanged( ddlb_1.totalitems( ) )
+
+//1.waiting webbrowser init
+//2.Navigation DefaultUrl
+//3.event wb_1.Navigationprogressindex
+
+end event
+
+type dw_series from u_dw within tabpage_echarts_pie
+boolean visible = false
+integer x = 791
+integer y = 2052
+integer taborder = 60
+string dataobject = "d_series"
+end type
+
+type dw_category from u_dw within tabpage_echarts_pie
+integer x = 41
+integer y = 1340
+integer width = 1582
+integer height = 528
+integer taborder = 60
+string dataobject = "d_category2"
+end type
+
+event itemchanged;call super::itemchanged;THIS.AcceptText( )
+
+wf_apply()
+end event
+
+type ddlb_1 from dropdownlistbox within tabpage_echarts_pie
+integer x = 389
+integer y = 1224
+integer width = 901
+integer height = 352
+integer taborder = 30
+integer textsize = -9
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+boolean sorted = false
+borderstyle borderstyle = stylelowered!
+end type
+
+event selectionchanged;String ls_SeriesName
+
+ls_SeriesName = ddlb_1.Text(index)
+
+dw_category.SetReDraw(FALSE)
+dw_category.SetFilter( "#1 = '" + ls_SeriesName + "'" )
+dw_category.Filter()
+dw_category.SetReDraw(TRUE)
+
+end event
+
+type st_11 from statictext within tabpage_echarts_pie
+integer x = 46
+integer y = 1232
+integer width = 343
+integer height = 68
+integer textsize = -9
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "Series Name :"
+boolean focusrectangle = false
+end type
+
+type rb_3 from radiobutton within tabpage_echarts_pie
+integer x = 1051
+integer y = 1112
+integer width = 201
+integer height = 76
+integer textsize = -9
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "Area"
+end type
+
+event clicked;//
+wf_apply()
+end event
+
+type rb_2 from radiobutton within tabpage_echarts_pie
+integer x = 750
+integer y = 1112
+integer width = 256
+integer height = 76
+integer textsize = -9
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "Radius"
+end type
+
+event clicked;//
+wf_apply()
+end event
+
+type rb_1 from radiobutton within tabpage_echarts_pie
+integer x = 480
+integer y = 1112
+integer width = 224
+integer height = 76
+integer textsize = -9
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "None"
+boolean checked = true
+end type
+
+event clicked;//
+wf_apply()
+end event
+
+type st_10 from statictext within tabpage_echarts_pie
+integer x = 46
+integer y = 1116
+integer width = 293
+integer height = 68
+integer textsize = -9
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "Rose Type:"
+boolean focusrectangle = false
+end type
+
+type wb_echarts from n_webbrowser within tabpage_echarts_pie
+event ue_ ( )
+integer x = 1669
+integer y = 356
+integer width = 2939
+integer height = 1512
+end type
+
+event navigationprogressindex;call super::navigationprogressindex;IF progressindex = 100 THEN
+	IF ib_flag THEN
+		ib_flag = false
+		wf_apply()
+	END IF
+END IF
+end event
+
+event ue_clicked;call super::ue_clicked;JsonParser lnv_JsonParser
+Long 		ll_RootObject, ll_Find, ll_I, ll_Name
+String 	ls_Name, ls_CategoryName
+
+lnv_JsonParser = Create JsonParser
+
+lnv_JsonParser.LoadString(as_arg)
+ll_RootObject = lnv_JsonParser.GetRootItem()
+ls_Name = lnv_JsonParser.GetItemString( ll_RootObject, "name" )
+
+
+ll_Find = dw_category.Find( "name = '" + ls_Name  + "'", 1, dw_category.RowCount()  )
+If ll_Find > 0 Then
+	dw_category.SetRedraw(False)
+	dw_category.ScrollToRow(dw_graph.RowCount())
+	dw_category.ScrollToRow(ll_Find)
+	dw_category.selectrow( 0, False )
+	dw_category.selectrow( ll_Find, True )
+	dw_category.SetRedraw(True)
+End If
+
+If IsValid ( lnv_JsonParser ) Then Destroy ( lnv_JsonParser )
+end event
+
+type dw_graph from u_dw within tabpage_echarts_pie
+integer x = 41
+integer y = 356
+integer width = 1582
+integer height = 720
+integer taborder = 30
+string dataobject = "d_dept_empidcount_pie"
+end type
+
+type st_9 from statictext within tabpage_echarts_pie
+integer x = 2962
+integer y = 248
+integer width = 498
+integer height = 96
+integer textsize = -11
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "WebBrowser"
+alignment alignment = center!
+boolean focusrectangle = false
+end type
+
+type st_8 from statictext within tabpage_echarts_pie
+integer x = 562
+integer y = 256
+integer width = 603
+integer height = 88
+integer textsize = -11
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "Graph DataWindow"
+alignment alignment = center!
+boolean focusrectangle = false
+end type
+
+type st_7 from statictext within tabpage_echarts_pie
+integer x = 46
+integer y = 176
+integer width = 2747
+integer height = 72
+integer textsize = -9
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "In the generated data table, you can edit the data contents, and create new corresponding chart by pressing Enter."
+alignment alignment = center!
+boolean focusrectangle = false
+end type
+
+type st_6 from statictext within tabpage_echarts_pie
+integer x = 46
+integer y = 100
+integer width = 2089
+integer height = 80
+integer textsize = -9
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "The tool can read your chart imported from DataWindow without providing raw data. "
+boolean focusrectangle = false
+end type
+
+type st_5 from statictext within tabpage_echarts_pie
+integer x = 46
+integer y = 24
+integer width = 361
+integer height = 72
+integer textsize = -9
+integer weight = 700
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Segoe UI"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "Introduction"
+boolean focusrectangle = false
+end type
 
 type tabpage_4 from userobject within tab_1
 boolean visible = false
@@ -1942,412 +2348,6 @@ w_progressbar.hpb_1.position = 100
 
 IF IsValid(w_progressbar) Then Close(w_progressbar)
 end event
-
-type tabpage_echarts_pie from userobject within tab_1
-event create ( )
-event destroy ( )
-event ue_open ( )
-integer x = 142
-integer y = 16
-integer width = 3973
-integer height = 2676
-long backcolor = 67108864
-string text = "ECharts Pie"
-long tabtextcolor = 33554432
-long picturemaskcolor = 536870912
-dw_series dw_series
-dw_category dw_category
-ddlb_1 ddlb_1
-st_11 st_11
-rb_3 rb_3
-rb_2 rb_2
-rb_1 rb_1
-st_10 st_10
-wb_echarts wb_echarts
-dw_graph dw_graph
-st_9 st_9
-st_8 st_8
-st_7 st_7
-st_6 st_6
-st_5 st_5
-end type
-
-on tabpage_echarts_pie.create
-this.dw_series=create dw_series
-this.dw_category=create dw_category
-this.ddlb_1=create ddlb_1
-this.st_11=create st_11
-this.rb_3=create rb_3
-this.rb_2=create rb_2
-this.rb_1=create rb_1
-this.st_10=create st_10
-this.wb_echarts=create wb_echarts
-this.dw_graph=create dw_graph
-this.st_9=create st_9
-this.st_8=create st_8
-this.st_7=create st_7
-this.st_6=create st_6
-this.st_5=create st_5
-this.Control[]={this.dw_series,&
-this.dw_category,&
-this.ddlb_1,&
-this.st_11,&
-this.rb_3,&
-this.rb_2,&
-this.rb_1,&
-this.st_10,&
-this.wb_echarts,&
-this.dw_graph,&
-this.st_9,&
-this.st_8,&
-this.st_7,&
-this.st_6,&
-this.st_5}
-end on
-
-on tabpage_echarts_pie.destroy
-destroy(this.dw_series)
-destroy(this.dw_category)
-destroy(this.ddlb_1)
-destroy(this.st_11)
-destroy(this.rb_3)
-destroy(this.rb_2)
-destroy(this.rb_1)
-destroy(this.st_10)
-destroy(this.wb_echarts)
-destroy(this.dw_graph)
-destroy(this.st_9)
-destroy(this.st_8)
-destroy(this.st_7)
-destroy(this.st_6)
-destroy(this.st_5)
-end on
-
-event ue_open();String ls_Category, ls_SeriesName, ls_SeriesName2
-Long ll_SeriesCount, ll_Row, ll_Row2, ll_i, ll_j, ll_DataCount, ldb_Value
-Integer	li_rtc
-
-//dw_graph.SetTransObject(SQLCA)
-//dw_graph.Retrieve()
-li_rtc = inv_RESTClient.Retrieve(dw_graph, "http://localhost:16561/api/D_Dept_Empidcount_Pie/Retrieve")
-
-
-ib_flag = TRUE
-ll_SeriesCount = dw_graph.SeriesCount("gr_1")
-
-FOR ll_i = 1 TO ll_SeriesCount
-	ls_SeriesName = dw_graph.SeriesName( "gr_1", ll_i)
-	ls_SeriesName2 = ls_SeriesName
-	IF IsNull(ls_SeriesName2) OR ls_SeriesName2 = "" THEN
-		ls_SeriesName2 = "Series" + String(ll_i)
-	END IF
-	
-	ddlb_1.AddItem(ls_SeriesName2)
-	
-	ll_Row = dw_series.InsertRow(0)
-	dw_series.SetItem(ll_Row, 1, ls_SeriesName2)
-	
-	ll_DataCount = dw_graph.DataCount( "gr_1", ls_SeriesName)
-	FOR ll_j = 1 TO ll_DataCount
-		ls_Category = dw_graph.CategoryName( "gr_1", ll_j)
-		ldb_Value = dw_graph.GetData( "gr_1", ll_i, ll_j)
-		ll_Row2 = dw_category.InsertRow(0)
-		dw_category.SetItem(ll_Row2, "series", ls_SeriesName2)
-		dw_category.SetItem(ll_Row2, "name", ls_Category)
-		dw_category.SetItem(ll_Row2, "values", ldb_Value)
-	NEXT
-NEXT
-
-ddlb_1.post SelectItem( ddlb_1.totalitems( ) )
-ddlb_1.post Event selectionchanged( ddlb_1.totalitems( ) )
-
-//1.waiting webbrowser init
-//2.Navigation DefaultUrl
-//3.event wb_1.Navigationprogressindex
-
-end event
-
-type dw_series from u_dw within tabpage_echarts_pie
-boolean visible = false
-integer x = 791
-integer y = 2052
-integer taborder = 60
-string dataobject = "d_series"
-end type
-
-type dw_category from u_dw within tabpage_echarts_pie
-integer x = 41
-integer y = 1340
-integer width = 1582
-integer height = 528
-integer taborder = 60
-string dataobject = "d_category2"
-end type
-
-event itemchanged;call super::itemchanged;THIS.AcceptText( )
-
-wf_apply()
-end event
-
-type ddlb_1 from dropdownlistbox within tabpage_echarts_pie
-integer x = 389
-integer y = 1224
-integer width = 901
-integer height = 352
-integer taborder = 30
-integer textsize = -9
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-boolean sorted = false
-borderstyle borderstyle = stylelowered!
-end type
-
-event selectionchanged;String ls_SeriesName
-
-ls_SeriesName = ddlb_1.Text(index)
-
-dw_category.SetReDraw(FALSE)
-dw_category.SetFilter( "#1 = '" + ls_SeriesName + "'" )
-dw_category.Filter()
-dw_category.SetReDraw(TRUE)
-
-end event
-
-type st_11 from statictext within tabpage_echarts_pie
-integer x = 46
-integer y = 1232
-integer width = 343
-integer height = 68
-integer textsize = -9
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "Series Name :"
-boolean focusrectangle = false
-end type
-
-type rb_3 from radiobutton within tabpage_echarts_pie
-integer x = 1051
-integer y = 1112
-integer width = 201
-integer height = 76
-integer textsize = -9
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "Area"
-end type
-
-event clicked;//
-wf_apply()
-end event
-
-type rb_2 from radiobutton within tabpage_echarts_pie
-integer x = 750
-integer y = 1112
-integer width = 256
-integer height = 76
-integer textsize = -9
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "Radius"
-end type
-
-event clicked;//
-wf_apply()
-end event
-
-type rb_1 from radiobutton within tabpage_echarts_pie
-integer x = 480
-integer y = 1112
-integer width = 224
-integer height = 76
-integer textsize = -9
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "None"
-boolean checked = true
-end type
-
-event clicked;//
-wf_apply()
-end event
-
-type st_10 from statictext within tabpage_echarts_pie
-integer x = 46
-integer y = 1116
-integer width = 293
-integer height = 68
-integer textsize = -9
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "Rose Type:"
-boolean focusrectangle = false
-end type
-
-type wb_echarts from n_webbrowser within tabpage_echarts_pie
-event ue_ ( )
-integer x = 1669
-integer y = 356
-integer width = 2939
-integer height = 1512
-end type
-
-event navigationprogressindex;call super::navigationprogressindex;IF progressindex = 100 THEN
-	IF ib_flag THEN
-		ib_flag = false
-		wf_apply()
-	END IF
-END IF
-end event
-
-event ue_clicked;call super::ue_clicked;JsonParser lnv_JsonParser
-Long 		ll_RootObject, ll_Find, ll_I, ll_Name
-String 	ls_Name, ls_CategoryName
-
-lnv_JsonParser = Create JsonParser
-
-lnv_JsonParser.LoadString(as_arg)
-ll_RootObject = lnv_JsonParser.GetRootItem()
-ls_Name = lnv_JsonParser.GetItemString( ll_RootObject, "name" )
-
-
-ll_Find = dw_category.Find( "name = '" + ls_Name  + "'", 1, dw_category.RowCount()  )
-If ll_Find > 0 Then
-	dw_category.SetRedraw(False)
-	dw_category.ScrollToRow(dw_graph.RowCount())
-	dw_category.ScrollToRow(ll_Find)
-	dw_category.selectrow( 0, False )
-	dw_category.selectrow( ll_Find, True )
-	dw_category.SetRedraw(True)
-End If
-
-If IsValid ( lnv_JsonParser ) Then Destroy ( lnv_JsonParser )
-end event
-
-type dw_graph from u_dw within tabpage_echarts_pie
-integer x = 41
-integer y = 356
-integer width = 1582
-integer height = 720
-integer taborder = 30
-string dataobject = "d_dept_empidcount_pie"
-end type
-
-type st_9 from statictext within tabpage_echarts_pie
-integer x = 2962
-integer y = 248
-integer width = 498
-integer height = 96
-integer textsize = -11
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "WebBrowser"
-alignment alignment = center!
-boolean focusrectangle = false
-end type
-
-type st_8 from statictext within tabpage_echarts_pie
-integer x = 562
-integer y = 256
-integer width = 603
-integer height = 88
-integer textsize = -11
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "Graph DataWindow"
-alignment alignment = center!
-boolean focusrectangle = false
-end type
-
-type st_7 from statictext within tabpage_echarts_pie
-integer x = 46
-integer y = 176
-integer width = 2747
-integer height = 72
-integer textsize = -9
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "In the generated data table, you can edit the data contents, and create new corresponding chart by pressing Enter."
-alignment alignment = center!
-boolean focusrectangle = false
-end type
-
-type st_6 from statictext within tabpage_echarts_pie
-integer x = 46
-integer y = 100
-integer width = 2089
-integer height = 80
-integer textsize = -9
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "The tool can read your chart imported from DataWindow without providing raw data. "
-boolean focusrectangle = false
-end type
-
-type st_5 from statictext within tabpage_echarts_pie
-integer x = 46
-integer y = 24
-integer width = 361
-integer height = 72
-integer textsize = -9
-integer weight = 700
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Segoe UI"
-long textcolor = 33554432
-long backcolor = 67108864
-string text = "Introduction"
-boolean focusrectangle = false
-end type
 
 type st_graph from statictext within u_salesreport
 boolean visible = false
