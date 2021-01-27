@@ -60,6 +60,10 @@ uo_1.tab_1.tabpage_5.wb_3.Height = newheight - uo_1.tab_1.tabpage_5.wb_3.y  -  6
 //Google Charts 2
 uo_1.tab_1.tabpage_6.wb_1.Height = newheight - uo_1.tab_1.tabpage_6.wb_1.y  -  64 * 2
 
+//ECharts Pie
+uo_1.tab_1.tabpage_echarts_pie.wb_echarts.Height = newheight - uo_1.tab_1.tabpage_echarts_pie.wb_echarts.y - 64 * 2
+uo_1.tab_1.tabpage_echarts_pie.wb_echarts.Width = newwidth - uo_1.tab_1.tabpage_echarts_pie.wb_echarts.x - 64 * 2
+
 SetRedraw(True)
 end event
 
