@@ -1477,7 +1477,7 @@ Integer	li_rtc
 
 //dw_graph.SetTransObject(SQLCA)
 //dw_graph.Retrieve()
-li_rtc = inv_RESTClient.Retrieve(dw_graph, "http://192.168.1.92:8080/api/OrderReport/RetrieveDeptCountAsync")
+li_rtc = inv_RESTClient.Retrieve(dw_graph, "http://localhost:9966/api/OrderReport/RetrieveDeptEmpidcountPie")
 
 
 ib_flag = TRUE
