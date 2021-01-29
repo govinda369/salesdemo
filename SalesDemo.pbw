@@ -4,6 +4,6 @@ Save Format v3.0(19990112)
  1 "Native_PB\\Appeon.SalesDemo\\salesdemo.pbt";
  2 "Native_PS\\Appeon.SalesDemo\\salesdemo.pbt";
 @end;
-DefaultTarget "Native_PS\\Appeon.SalesDemo\\salesdemo.pbt";
+DefaultTarget "Restful_PB\\appeon.salesdemo.pb\\salesdemo_restful.pbt";
 DefaultExportEncode "UTF-8";
-DefaultRemoteTarget "Native_PS\\Appeon.SalesDemo\\salesdemo.pbt";
+DefaultRemoteTarget "Restful_PB\\appeon.salesdemo.pb\\salesdemo_restful.pbt";
